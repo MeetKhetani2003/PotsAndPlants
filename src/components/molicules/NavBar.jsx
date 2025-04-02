@@ -1,32 +1,58 @@
 /* eslint-disable no-unused-vars */
 import { motion, AnimatePresence } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('Home');
+  const menuRef = useRef(null);
 
   const navLinks = [
     { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#about' },
-    { name: 'Shop', href: '#shop' },
+    { name: 'Featured Plants', href: '#plants' },
+    { name: 'Benefits', href: '#benifits' },
+    { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
 
-  // Animation variants for mobile menu
-  const menuVariants = {
-    closed: {
-      opacity: 0,
-      y: '-100%',
-      transition: { duration: 0.3, ease: 'easeIn' },
-    },
-    open: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
-  };
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
 
-  // Animation for individual links
-  const linkVariants = {
-    closed: { opacity: 0, y: -20 },
-    open: { opacity: 1, y: 0, transition: { duration: 0.3, delay: 0.1 } },
-  };
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // Intersection Observer for tracking sections
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map((link) =>
+        document.querySelector(link.href)
+      );
+
+      for (const section of sections) {
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveLink(
+              navLinks.find((link) => link.href === `#${section.id}`).name
+            );
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav className='fixed top-0 left-0 w-full bg-gradient-to-r from-white to-gray-50/95 backdrop-blur-md text-orange-500 z-50 shadow-lg'>
@@ -48,12 +74,22 @@ const NavBar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className='relative text-lg font-normal text-orange-600 hover:text-orange-700 transition-colors duration-300 group  tracking-widest'
+                className={`relative text-lg font-normal transition-colors duration-300 tracking-widest ${
+                  activeLink === link.name
+                    ? 'text-orange-700 font-bold'
+                    : 'text-orange-600 hover:text-orange-700'
+                }`}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {link.name}
-                <span className='absolute left-0 bottom-[-4px] w-full h-0.5 bg-gradient-to-r from-orange-500 to-orange-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center shadow-sm'></span>
+                <span
+                  className={`absolute left-0 bottom-[-4px] w-full h-0.5 bg-gradient-to-r from-orange-500 to-orange-700 transition-transform duration-300 ${
+                    activeLink === link.name
+                      ? 'scale-x-100'
+                      : 'scale-x-0 group-hover:scale-x-100'
+                  }`}
+                ></span>
               </motion.a>
             ))}
           </div>
@@ -102,20 +138,23 @@ const NavBar = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className='md:hidden bg-gradient-to-b from-white to-gray-50/90 backdrop-blur-md border-t border-orange-100 shadow-xl'
+              ref={menuRef}
+              className='md:hidden bg-gradient-to-b from-white to-gray-50/90 backdrop-blur-md border-t border-orange-100 shadow-xl absolute w-full left-0'
               initial='closed'
               animate='open'
               exit='closed'
-              variants={menuVariants}
             >
               <div className='px-6 pt-6 pb-8 space-y-5'>
                 {navLinks.map((link) => (
                   <motion.a
                     key={link.name}
                     href={link.href}
-                    className='block px-5 py-3 text-xl  font-normal text-orange-600 bg-orange-50/30 hover:bg-orange-100/70 rounded-xl shadow-md hover:shadow-lg transition-all duration-300  tracking-widest'
+                    className={`block px-5 py-3 text-xl font-normal rounded-xl shadow-md hover:shadow-lg transition-all duration-300 tracking-widest ${
+                      activeLink === link.name
+                        ? 'bg-orange-500 text-white'
+                        : 'text-orange-600 bg-orange-50/30 hover:bg-orange-100/70'
+                    }`}
                     onClick={() => setIsOpen(false)}
-                    variants={linkVariants}
                   >
                     {link.name}
                   </motion.a>
