@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@font-face {
+  font-family: 'Marcellus';
+  src: url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+}
+@theme {
+  --font-marcellus: 'Marcellus';
+}
+/* @font-face {
+  font-family: 'Marcellus';
+  src: url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+} */
+/* * {
+  cursor: none;
+} */
