@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @font-face {
   font-family: 'Marcellus';
-  src: url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+  src: url('./assets/Marcellus-Regular.ttf');
 }
 @theme {
   --font-marcellus: 'Marcellus';
@@ -10,6 +10,6 @@
   font-family: 'Marcellus';
   src: url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
 } */
-/* * {
+* {
   cursor: none;
-} */
+}

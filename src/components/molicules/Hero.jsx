@@ -15,15 +15,15 @@ const Hero = () => {
       />
 
       {/* Overlay and Text */}
-      <div className='absolute inset-0 flex items-center justify-center bg-black/60'>
-        <div className='text-center text-white px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto'>
-          <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4'>
-            Welcome to PlantStore
+      <div className='absolute inset-0 flex items-center justify-center bg-black/65'>
+        <div className='text-center text-white px-4 sm:px-6 lg:px-8  mx-auto'>
+          <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl  font-semibold  tracking-wider mb-5 font-marcellus'>
+            Welcome to World of Fibre Planters
           </h1>
-          <p className='text-lg sm:text-xl md:text-2xl font-medium text-orange-200'>
+          <p className='text-lg sm:text-xl md:text-2xl font-medium text-orange-100 mb-8 italic'>
             Discover the beauty of nature with our premium plants.
           </p>
-          <button className='mt-6 px-6 py-3 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-colors duration-300'>
+          <button className='mt-6 px-8 py-3 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-colors duration-300 uppercase tracking-wide'>
             Shop Now
           </button>
         </div>

@@ -9,23 +9,26 @@ const benefitVariants = {
 export default function BenefitsSection() {
   const benefits = [
     {
-      title: 'Smart Plant & Tree Care',
-      description: 'We help keep your plants healthy and evergreen.',
+      title: 'Light Weight',
+      description:
+        'Compare to other RCC pots, Fibre pots are known for Light weight   and strong',
       icon: <FaTree className='text-orange-600 text-3xl' />,
     },
     {
-      title: 'Nursery Direct',
-      description: 'Directly delivering the best plants to your doorstep.',
+      title: 'Durability',
+      description: 'No need to worry about to breakage or bulging',
       icon: <FaSeedling className='text-orange-600 text-3xl' />,
     },
     {
-      title: 'Plant Sentry',
-      description: 'Ensuring your plants remain protected and nourished.',
+      title: 'Asthetic',
+      description:
+        ' Fibre planters are available in all colors, shapes and sizes matching the interiors of your beautiful home.',
       icon: <FaLeaf className='text-orange-600 text-3xl' />,
     },
     {
-      title: 'Plant Renovation',
-      description: 'Revive and refresh your plants with expert care.',
+      title: 'Easy Manitenance',
+      description:
+        'single wipe on Fibre planters will make it look like a new planters even after many years',
       icon: <FaRecycle className='text-orange-600 text-3xl' />,
     },
   ];

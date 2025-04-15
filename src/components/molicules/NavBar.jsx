@@ -64,7 +64,7 @@ const NavBar = () => {
               href='#hero'
               className='text-4xl font-marcellus font-bold bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent tracking-tight drop-shadow-md hover:drop-shadow-lg transition-shadow duration-300'
             >
-              PlantStore
+              Mahatvi
             </a>
           </div>
 

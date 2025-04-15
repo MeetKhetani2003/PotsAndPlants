@@ -33,6 +33,9 @@ const App = () => {
           <Hero />
         </Section>
         <Section id='marquee'>
+          <h2 className='text-3xl mt-6 font-marcellus font-semibold text-gray-800 mb-6 text-center'>
+            Delivered more than 100+ Projects
+          </h2>
           <MarqueeComponent />
         </Section>
         <Section id='plants'>
