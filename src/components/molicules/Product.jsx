@@ -75,11 +75,11 @@ const ProductCard = () => {
               {product.name}
             </h3>
             <div className='text-gray-700 mt-2'>
-              {product.oldPrice && (
+              {/* {product.oldPrice && (
                 <span className='text-sm text-gray-400 line-through mr-2'>
                   ${product.oldPrice}.00
                 </span>
-              )}
+              )} */}
               <span className='text-lg font-bold text-black'>
                 ${product.newPrice}.00
               </span>
