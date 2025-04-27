@@ -61,28 +61,28 @@ const ProductCard = () => {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            {product.discount && (
+            {/* {product.discount && (
               <div className='absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full'>
                 -{product.discount}%
               </div>
-            )}
+            )} */}
             <img
               src={product.image}
               alt={product.name}
               className='w-full h-96 object-cover rounded-md'
             />
-            <h3 className='text-lg font-marcellus font-semibold mt-4 text-gray-800'>
+            {/* <h3 className='text-lg font-marcellus font-semibold mt-4 text-gray-800'>
               {product.name}
-            </h3>
+            </h3> */}
             <div className='text-gray-700 mt-2'>
               {/* {product.oldPrice && (
                 <span className='text-sm text-gray-400 line-through mr-2'>
                   ${product.oldPrice}.00
                 </span>
               )} */}
-              <span className='text-lg font-bold text-black'>
+              {/* <span className='text-lg font-bold text-black'>
                 ${product.newPrice}.00
-              </span>
+              </span> */}
             </div>
           </motion.div>
         ))}
